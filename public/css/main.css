@@ -888,6 +888,10 @@ legend {
   justify-content: space-between;
   -ms-flex-align: center;
   align-items: center;
+  @media (max-width: 760px) {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .stats .stats-item{
@@ -902,6 +906,10 @@ legend {
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 760px) {
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
 }
 
 .s003{
