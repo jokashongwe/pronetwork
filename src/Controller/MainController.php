@@ -43,7 +43,8 @@ class MainController extends AbstractController
         $offset = ($page - 1) * 50;
 
         if($type == "contacts"){
-            $result = $contactsRepository->recherche($query, $offset);
+            $count = $contactsRepository->recherche($query, $offset, true);
+            $result = $contactsRepository->recherche($query, $offset, false);
         }else {
             if(!is_null($category)){
                 $count = $companiesRepository->rechercheParCategorie($category, $province, $offset, true);
@@ -67,6 +68,19 @@ class MainController extends AbstractController
             'query' => $query
         ]);
     }
+
+    #[Route('/company_details/{company_id}', name: 'app_company_details')]
+    public function company_details(Request $request, CompaniesRepository $companiesRepository, ContactsRepository $contactsRepository, $company_id)
+    {
+        $company = $companiesRepository->find($company_id);
+        $contacts = $contactsRepository->findBy(["company" => $company_id]);
+        return $this->render('main/company_detail.html.twig', [
+            'controller_name' => 'MainController',
+            'company' => $company,
+            'contacts' => $contacts
+        ]);
+    }
+
 
     #[Route('/about', name: 'app_about')]
     public function about(): Response

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CompaniesRepository;
+use App\Entity\Contacts;
 
 /**
  * Companies
@@ -47,9 +48,23 @@ class Companies
     /**
      * @var string|null
      *
+     * @ORM\Column(name="company_category", type="string", length=10, nullable=true)
+     */
+    private $companyCategory;
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(name="company_alternative_name", type="string", length=255, nullable=true)
      */
     private $companyAlternativeName;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="company_desc", type="text", nullable=true)
+     */
+    private $companyDesc;
 
     /**
      * @var array|null
@@ -114,6 +129,13 @@ class Companies
      */
     private $companyRccm;
 
+     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="company_legal_form", type="string", length=255, nullable=true)
+     */
+    private $companyLegalForm;
+
     /**
      * @var string|null
      *
@@ -128,5 +150,195 @@ class Companies
      */
     private $companyCreationDate;
 
+    
 
+    /**
+     * Get the value of companyId
+     *
+     * @return  string
+     */ 
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * Get the value of companyCreationDate
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyCreationDate()
+    {
+        return $this->companyCreationDate;
+    }
+
+    /**
+     * Get the value of companyTaxNumber
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyTaxNumber()
+    {
+        return $this->companyTaxNumber;
+    }
+
+    /**
+     * Get the value of companyRccm
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyRccm()
+    {
+        return $this->companyRccm;
+    }
+
+    /**
+     * Get the value of companyCapital
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyCapital()
+    {
+        return $this->companyCapital;
+    }
+
+    /**
+     * Get the value of companySource
+     *
+     * @return  string|null
+     */ 
+    public function getCompanySource()
+    {
+        return $this->companySource;
+    }
+
+    /**
+     * Get the value of companySocialLinks
+     *
+     * @return  array|null
+     */ 
+    public function getCompanySocialLinks()
+    {
+        return $this->companySocialLinks;
+    }
+
+    /**
+     * Get the value of companyRevenue
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyRevenue()
+    {
+        return $this->companyRevenue;
+    }
+
+    /**
+     * Get the value of companyEmployees
+     *
+     * @return  array|null
+     */ 
+    public function getCompanyEmployees()
+    {
+        return $this->companyEmployees;
+    }
+
+    /**
+     * Get the value of companyDomain
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyDomain()
+    {
+        return $this->companyDomain;
+    }
+
+    /**
+     * Get the value of companyAddress
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyAddress()
+    {
+        return $this->companyAddress;
+    }
+
+    /**
+     * Get the value of companyAlternativeName
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyAlternativeName()
+    {
+        return $this->companyAlternativeName;
+    }
+
+    /**
+     * Get the value of companySectors
+     *
+     * @return  array|null
+     */ 
+    public function getCompanySectors()
+    {
+        return $this->companySectors;
+    }
+
+    /**
+     * Get the value of companyLegalName
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyLegalName()
+    {
+        return $this->companyLegalName;
+    }
+
+    /**
+     * Get the value of companyState
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyState()
+    {
+        return $this->companyState;
+    }
+
+    /**
+     * Get the value of companyCity
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyCity()
+    {
+        return $this->companyCity;
+    }
+
+    /**
+     * Get the value of companyCategory
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyCategory()
+    {
+        return $this->companyCategory;
+    }
+
+    /**
+     * Get the value of companyDesc
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyDesc()
+    {
+        return $this->companyDesc;
+    }
+
+    /**
+     * Get the value of companyLegalForm
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyLegalForm()
+    {
+        return $this->companyLegalForm;
+    }
 }

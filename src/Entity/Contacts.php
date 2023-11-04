@@ -43,6 +43,13 @@ class Contacts
     private $contactEmail;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="contact_role", type="string", length=255, nullable=true)
+     */
+    private $contactRole;
+
+    /**
      * @var array|null
      *
      * @ORM\Column(name="contact_experiences", type="json", nullable=true)
@@ -84,4 +91,86 @@ class Contacts
         return $this->contactId;
     }
 
+    
+
+
+    /**
+     * Get the value of contactFullName
+     *
+     * @return  string|null
+     */ 
+    public function getContactFullName()
+    {
+        return $this->contactFullName;
+    }
+
+    /**
+     * Get the value of contactAddress
+     *
+     * @return  string|null
+     */ 
+    public function getContactAddress()
+    {
+        return $this->contactAddress;
+    }
+
+    /**
+     * Get the value of contactSource
+     *
+     * @return  string|null
+     */ 
+    public function getContactSource()
+    {
+        return $this->contactSource;
+    }
+
+    /**
+     * Get the value of contactEmail
+     *
+     * @return  string|null
+     */ 
+    public function getContactEmail()
+    {
+        return $this->contactEmail;
+    }
+
+    /**
+     * Get the value of contactLinkedinUrl
+     *
+     * @return  string|null
+     */ 
+    public function getContactLinkedinUrl()
+    {
+        return $this->contactLinkedinUrl;
+    }
+
+    /**
+     * Get the value of contactExperiences
+     *
+     * @return  array|null
+     */ 
+    public function getContactExperiences()
+    {
+        return $this->contactExperiences;
+    }
+
+    /**
+     * Get the value of contactPhones
+     *
+     * @return  array|null
+     */ 
+    public function getContactPhones()
+    {
+        return $this->contactPhones;
+    }
+
+    /**
+     * Get the value of contactRole
+     *
+     * @return  string|null
+     */ 
+    public function getContactRole()
+    {
+        return $this->contactRole;
+    }
 }
