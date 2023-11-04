@@ -69,7 +69,7 @@
                 <div style="padding-right: 20px;" class="company-contact-item">
                 {% for contact in contacts %}
                     <div class="company-contact" >
-                      <span style="font-size: 13px; color: #176B87" class="result-title" >{{contact.contactFullName | capitalize}}</span><br/>
+                      <a href="/contact_details/{{contact.contactId}}" style="font-size: 13px; color: #176B87" class="result-title" >{{contact.contactFullName | capitalize}}</a><br/>
                       <span style="font-size: 10px;" >{{ contact.contactRole }} <span>
                       {% if contact.contactLinkedinUrl %}
                         <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ contact.contactLinkedinUrl }}">Lien de contact</a>
