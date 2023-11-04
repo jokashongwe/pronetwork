@@ -819,6 +819,36 @@ legend {
   box-sizing: border-box;
 }
 
+.paginate {
+  display: flex;
+  width: 50%;
+  display: -ms-flexbox;
+  flex-direction: row;
+  -ms-flex-pack: center;
+  overflow: hidden;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  align-items: center;
+  /*background-color: #a598ee;*/
+  padding: 15px;
+}
+
+.paginate-button {
+  border-radius: 0.3rem;
+  padding: 0.8rem 1.3rem;
+  background-color: #64CCC5;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.result-category{
+  cursor: pointer;
+  text-decoration: none;
+  color: #555
+}
+
 .results {
   margin-top: 2rem;
   display: -ms-flexbox;

@@ -45,7 +45,11 @@ class ContactsRepository extends ServiceEntityRepository
         }
     }
 
-    public function recherche($value)
+    public function search_count(){
+        
+    }
+
+    public function recherche($value, $offset=0)
     {
         $conn = $this->getEntityManager()->getConnection();
 
@@ -54,6 +58,8 @@ class ContactsRepository extends ServiceEntityRepository
             FROM contacts c
             WHERE c.contact_full_name ilike '$value'
             ORDER BY c.contact_full_name
+            LIMIT 50
+            OFFSET $offset
         ";
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();

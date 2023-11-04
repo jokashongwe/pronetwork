@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="input-field second-wrap">
-            <input id="search" value={{query | replace({'%':''})}} name="search" type="text" placeholder="Recherche..." />
+            <input id="search" value="{{query | replace({'%':''})}}" name="search" type="text" placeholder="Recherche..." />
           </div>
           <div class="input-field third-wrap">
             <button class="btn-search" type="submit">
@@ -73,7 +73,7 @@
           </div>
         </div>
       </form>
-      <br/><br/> <span style="font-weight: normal; font-size: 13px;" >{{ results | length }} Résultats </span>
+      <br/><br/> <span style="font-weight: normal; font-size: 13px;" > {{ count.count }} Résultats - Page {{ page }} </span>
       <div class="results" >
         {% for result in results %}
           {% if type == 'contacts' %}
@@ -110,7 +110,7 @@
               <p/>
               
                 <p>
-                  <span class="result-category" style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px"><i style="color:#999" class="fa-solid fa-building"></i> catégorie: {{ result.company_category }}</span>
+                  <a  href="/search?filter=companies&category={{result.company_category}}"  class="result-category" style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px"><i style="color:#999" class="fa-solid fa-building"></i> catégorie: {{ result.company_category }}</a>
                 <p/>
               
               {% if result.company_sectors %}
@@ -127,6 +127,16 @@
           {% endif %}
         {% endfor %}
       </div>
+      {% if count.count > 50 %}
+        <div class="paginate">
+          {% if prev_page > 0 %}
+            <a class="paginate-button" href="search?filter={{type}}&search={{query | replace({'%':''})}}&provinces={{provinces}}&page={{prev_page}}" ><i class="fa-solid fa-circle-chevron-left"></i> Précédent</a>
+          {% endif %}
+          {% if next_page != -1 %}
+            <a class="paginate-button" href="search?filter={{type}}&search={{query | replace({'%':''})}}&provinces={{provinces}}&page={{next_page}}" >Suivant <i class="fa-solid fa-circle-chevron-right"></i></a>
+          {% endif %}
+        </div>
+      {% endif %}
       <div style="text-align: center;margin-top: 2rem" >
         <a style="font-size: 11px; text-align: center" href="/removal" ><i class="fa-solid fa-trash-can"></i> Supprimer mes infos </a><br/><br/>
         <a style="font-size: 11px; text-align: center;" href="/cgu" ><i class="fa-solid fa-file-signature"></i> (CGU) Conditions Générales d'utilisation </a>

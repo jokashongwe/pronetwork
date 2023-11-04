@@ -73,16 +73,66 @@ class CompaniesRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function recherche($value)
+    public function recherche($value, $province=null, $offset=0, $is_count=false)
     {
         $conn = $this->getEntityManager()->getConnection();
         $value = strtolower($value);
-        $sql = "
-            SELECT * 
-            FROM companies c
-            WHERE c.company_legal_name ilike '$value' or lower(company_sectors::text) ilike '$value'
-            ORDER BY c.company_legal_name
-        ";
+        $result = $is_count ? 'count(c.company_legal_name)' : '*';
+        $last_part = $is_count ? '' : "ORDER BY c.company_legal_name LIMIT 50 OFFSET $offset";
+        $province = strtolower($province) == "all" ? null : strtolower($province);
+        if(empty($province)){
+            $sql = "
+                SELECT $result 
+                FROM companies c
+                WHERE 
+                    c.company_legal_name ilike '$value' OR 
+                    lower(company_sectors::text) ilike '$value'
+                $last_part
+            ";
+        }else {
+            $sql = "
+                SELECT $result 
+                FROM companies c
+                WHERE 
+                    (c.company_legal_name ilike '$value' OR 
+                    lower(company_sectors::text) ilike '$value') AND
+                    lower(company_state) = lower('$province') 
+                $last_part
+            ";
+        }
+        
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
+    public function rechercheParCategorie($value, $province=null, $offset=0, $is_count=false)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $value = strtolower($value);
+        $result = $is_count ? 'count(c.company_legal_name)' : '*';
+        $last_part = $is_count ? '' : "ORDER BY c.company_legal_name LIMIT 50 OFFSET $offset";
+        $province = strtolower($province) == "all" ? null : strtolower($province);
+        
+        if(empty($province)){
+            $sql = "
+                SELECT $result
+                FROM companies c
+                WHERE lower(company_category) = '$value'
+                $last_part
+            ";
+        }else {
+            $sql = "
+                SELECT $result 
+                FROM companies c
+                WHERE 
+                    lower(company_category) = '$value' AND
+                    lower(company_state) = '$province'
+                $last_part
+            ";
+        }
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
 
