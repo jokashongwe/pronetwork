@@ -73,11 +73,35 @@ class MainController extends AbstractController
     public function company_details(Request $request, CompaniesRepository $companiesRepository, ContactsRepository $contactsRepository, $company_id)
     {
         $company = $companiesRepository->find($company_id);
+        if(is_null($company)){
+            return $this->redirectToRoute('app_main');
+        }
         $contacts = $contactsRepository->findBy(["company" => $company_id]);
+        
         return $this->render('main/company_detail.html.twig', [
             'controller_name' => 'MainController',
             'company' => $company,
             'contacts' => $contacts
+        ]);
+    }
+
+    #[Route('/contact_details/{contact_id}', name: 'app_contact_details')]
+    public function contact_details(Request $request, CompaniesRepository $companiesRepository, ContactsRepository $contactsRepository, $contact_id)
+    {
+        $contact = $contactsRepository->findOneBy(["contactId" => $contact_id]);
+        if(is_null($contact)){
+            return $this->redirectToRoute('app_main');
+        }
+        $cn_id = $contact->getContactId();
+        $contacts = $contactsRepository->findBy(["company" => $contact->getCompany()]);
+        $contacts = array_filter($contacts, function($cn) use ($cn_id){
+            return $cn->getContactId() != $cn_id;
+        });
+        return $this->render('main/contact_detail.html.twig', [
+            'controller_name' => 'MainController',
+            'company' => $contact->getCompany(),
+            'contact' => $contact,
+            'others' => $contacts
         ]);
     }
 

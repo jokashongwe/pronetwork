@@ -87,7 +87,7 @@ class Contacts
      */
     private $company;
 
-    public function getId(){
+    public function getContactId(){
         return $this->contactId;
     }
 
@@ -172,5 +172,15 @@ class Contacts
     public function getContactRole()
     {
         return $this->contactRole;
+    }
+
+    /**
+     * Get the value of company
+     *
+     * @return  \Companies
+     */ 
+    public function getCompany()
+    {
+        return $this->company;
     }
 }

@@ -874,6 +874,7 @@ legend {
 
 .results {
   margin-top: 2rem;
+  padding-top: 0.8rem;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
@@ -923,6 +924,8 @@ legend {
 .result-title{
   font-weight: 400;
   font-size: medium;
+  text-decoration: none !important; 
+  color: #555; 
 }
 
 .result-title:hover{

@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/themes/light.css"
+    />
+    <link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="s003" style="min-height: 20vh;" >
+      <h1 style="text-align: left; width: 47%; color: #64CCC5" >
+        <a style="color: #64CCC5; text-decoration: none" href="{{ path('app_main') }}" >ProNetwork</a>
+        <span style="font-weight: normal; font-size: 10px; color: #000" >RDC</span>
+      </h1>
+      <p><a class="result-title" style="text-decoration:none" href="/">ProNetwork</a> > Contact Details - {{ contact.contactFullName }} </p>
+      <div class="results" >
+          <div style="padding-left: 15px; overflow: hidden" class="results-item">
+              <h4 class="result-title" >{{contact.contactFullName | upper}}</h4>
+              <p style="color: #949494" >
+                <i  style="color: #949494; margin-right: 5px; font-size: 13px" class="fa-solid fa-user-tag"></i>{{ contact.contactRole }}
+              </p>
+              {% if contact.contactLinkedinUrl  %}
+                <p style="vertical-align: center; font-weight: 400; font-size: 13px" >
+                  <a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ contact.contactLinkedinUrl }}">Contacter</a>
+                </p>
+              {% endif %}      
+              <p>
+                <span style="font-size: 14px; font-weight: 400">Companie </span><br/><br/>
+                <a class="result-title" href="/company_details/{{company.companyId}}">{{company.companyLegalName }}</a><br/><br/>
+                <span style="font-size: 14px; font-weight: 400">Secteurs </span><br/>
+                <p>
+                  {% for sector in company.companySectors  %}
+                    {% if (sector | length) > 0  %}
+                      <a class="result-sector" href="/search?filter=companies&cateorgy={{sector}}" >{{ sector }}</a>,
+                    {% endif %}
+                  {% endfor %}
+                </p>
+              </p>
+              <p style="font-size: 13px; margin: 1.2rem 0" >Professionnels liés au contact</p>
+              <hr>
+                <div style="padding-right: 20px;" class="company-contact-item">
+                {% for con in others %}
+                    <div class="company-contact" >
+                      <a href="/contact_details/{{con.contactId}}" style="font-size: 13px; color: #176B87" class="result-title" >{{con.contactFullName | capitalize}}</a><br/>
+                      <span style="font-size: 10px;" >{{ con.contactRole }} <span>
+                      {% if con.contactLinkedinUrl %}
+                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ con.contactLinkedinUrl }}">Lien de contact</a>
+                    {% endif %}
+                      </div>
+                {% endfor %}
+                </div>
+              
+          </div>
+      </div>
+      
+      <div style="text-align: center;margin-top: 2rem" >
+        <a style="font-size: 11px; text-align: center" href="/removal" ><i class="fa-solid fa-trash-can"></i> Supprimer mes infos </a><br/><br/>
+        <a style="font-size: 11px; text-align: center;" href="/cgu" ><i class="fa-solid fa-file-signature"></i> (CGU) Conditions Générales d'utilisation </a>
+        <p style="font-size: 11px; text-align: center" >© 2023 ProNetwork</p>
+      </div>
+    </div>
+
+    <script src="/js/extention/choices.js"></script>
+    
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+      tippy('.result-category', {
+        content: "Représente le revenue estimé de l'entreprise. A: plus d'un million USD, B: plus de 100K USD, C: plus de 25K USD et D: moins de 25K USD",
+        theme: 'light',
+      });
+    </script>
+  </body>
+</html>

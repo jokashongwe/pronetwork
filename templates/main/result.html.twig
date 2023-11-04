@@ -78,7 +78,7 @@
         {% for result in results %}
           {% if type == 'contacts' %}
             <div class="results-item" style="padding-right: 15px">
-              <h4 class="result-title" >{{result.contact_full_name | upper}}</h4>
+              <a href="/contact_details/{{result.contact_id}}" class="result-title" >{{ loop.index + 1 }}.{{result.contact_full_name | upper}}</a>
               <p style="color: #949494" >
                 <i  style="color: #949494; margin-right: 5px; font-size: 13px" class="fa-solid fa-user-tag"></i>{{ result.contact_role }}
               </p>
