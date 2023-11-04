@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="s003">
+    <h1 style="text-align: center; width: 47%; color: #64CCC5" >
+        <a style="color: #64CCC5; text-decoration: none" href="{{ path('app_main') }}" >ProNetwork</a>
+        <span style="font-weight: normal; font-size: 10px; color: #000" >RDC</span>
+    </h1>
+    <div style="width: 50%; margin:auto" >
+        <h2 style="text-align: center" >Data Pipeline</h2>
+        <p style="text-align: center" >
+            <img class="blog-img" src="/images/NetChecks.png" />
+        </p>
+        <p style="font-weight:400" >Présentation</p>
+        <p style="font-size: 12px; text-align: justify; font-weight:300" >Les 3 derniers mois de l'année 2023 seront orienté sur les phases 1 à 3 du pipeline. Une fois que les données
+        auront atteint une intégrité stable (moins de 10% de doublons et 15% d'association erronés). Nous allons utiliser une images
+        pour la prédiction du genre, de l'âge et du salaire de chaque contacts afin d'avoir des informations les plus précises possibles.
+        </p>
+        <p style="font-size: 11px; text-align: center" >© 2023 ProNetwork</p>
+    </div>
+</div>
+{% endblock %}

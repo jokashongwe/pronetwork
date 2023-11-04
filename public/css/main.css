@@ -773,6 +773,10 @@ legend {
   color: gray;
 }
 
+.blog-img{
+  height: 18rem;
+}
+
 .choices__button {
   text-indent: -9999px;
   -webkit-appearance: none;
