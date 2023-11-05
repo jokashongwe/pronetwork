@@ -34,13 +34,7 @@
                   <a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ contact.contactLinkedinUrl }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </p>
               {% endif %}
-              {% if contact.contactLinks %}
-                <div class="contact-links" >
-                  {% for link in contact.contactLinks %}
-                    <p style="vertical-align: center; font-weight: 400; font-size: 13px"><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ link.link }}" target="_blank" rel="noopener noreferrer">{{link.title}}</a></p>
-                  {% endfor %}
-                </div>
-              {% endif %}
+              
               <p>
                 <span style="font-size: 14px; font-weight: 400">Société </span><br/><br/>
                 <a class="result-title" href="/company_details/{{company.companyId}}">{{company.companyLegalName }}</a><br/><br/>
@@ -66,6 +60,15 @@
                       </div>
                 {% endfor %}
                 </div>
+                {% if contact.contactLinks %}
+                <p style="font-size: 13px; margin: 1.2rem 0" >Actualités/Plus d'infos</p>
+                <hr>
+                <div class="contact-links" >
+                  {% for link in contact.contactLinks %}
+                    <p style="vertical-align: center; font-weight: 400; font-size: 13px"><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ link.link }}" target="_blank" rel="noopener noreferrer">{{link.title}}</a></p>
+                  {% endfor %}
+                </div>
+               {% endif %}
               
           </div>
       </div>
