@@ -51,10 +51,10 @@
                 <div style="padding-right: 20px;" class="company-contact-item">
                 {% for con in others %}
                     <div class="company-contact" >
-                      <a href="/contact_details/{{con.contactId}}" style="font-size: 13px; color: #176B87" class="result-title" >{{con.contactFullName | capitalize}}</a><br/>
+                      <a href="/contact_details/{{con.contactId}}"  style="font-size: 13px; color: #176B87" class="result-title" >{{con.contactFullName | capitalize}}</a><br/>
                       <span style="font-size: 10px;" >{{ con.contactRole }} <span>
                       {% if con.contactLinkedinUrl %}
-                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ con.contactLinkedinUrl }}">Lien de contact</a>
+                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ con.contactLinkedinUrl }}" target="_blank" rel="noopener noreferrer">Lien de contact</a>
                     {% endif %}
                       </div>
                 {% endfor %}

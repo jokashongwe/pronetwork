@@ -72,7 +72,7 @@
                       <a href="/contact_details/{{contact.contactId}}" style="font-size: 13px; color: #176B87" class="result-title" >{{contact.contactFullName | capitalize}}</a><br/>
                       <span style="font-size: 10px;" >{{ contact.contactRole }} <span>
                       {% if contact.contactLinkedinUrl %}
-                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ contact.contactLinkedinUrl }}">Lien de contact</a>
+                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ contact.contactLinkedinUrl }}" target="_blank" rel="noopener noreferrer" >Lien de contact</a>
                     {% endif %}
                       </div>
                 {% endfor %}

@@ -104,7 +104,7 @@
                 
                 {% if result.company_domain %}
                 Site Web:
-                <a href="https://{{result.company_domain | replace({",": "."}) }}" >
+                <a href="https://{{result.company_domain | replace({",": "."}) }}" target="_blank" rel="noopener noreferrer" >
                   
                     {{result.company_domain  | replace({",": "."}) }}
                 </a>
