@@ -77,21 +77,12 @@ class Contacts
      */
     private $contactAddress;
 
-    
     /**
-     * @var string|null
+     * @var array|null
      *
-     * @ORM\Column(name="contact_facebook_url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="contact_links", type="json", nullable=true)
      */
-    private $contactFacebookUrl;
-
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="contact_other_link", type="string", length=255, nullable=true)
-     */
-    private $contactOtherLink;
+    private $contactLinks;
 
     /**
      * @var \Companies
@@ -200,23 +191,15 @@ class Contacts
         return $this->company;
     }
 
-    /**
-     * Get the value of contactFacebookUrl
-     *
-     * @return  string|null
-     */ 
-    public function getContactFacebookUrl()
-    {
-        return $this->contactFacebookUrl;
-    }
+   
 
     /**
-     * Get the value of contactOtherLink
+     * Get the value of contactLinks
      *
-     * @return  string|null
+     * @return  array|null
      */ 
-    public function getContactOtherLink()
+    public function getContactLinks()
     {
-        return $this->contactOtherLink;
+        return $this->contactLinks;
     }
 }

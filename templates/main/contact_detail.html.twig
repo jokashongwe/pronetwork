@@ -31,9 +31,16 @@
               </p>
               {% if contact.contactLinkedinUrl  %}
                 <p style="vertical-align: center; font-weight: 400; font-size: 13px" >
-                  <a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ contact.contactLinkedinUrl }}">Contacter</a>
+                  <a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ contact.contactLinkedinUrl }}">LinkedIn</a>
                 </p>
-              {% endif %}      
+              {% endif %}
+              {% if contact.contactLinks %}
+                <p style="vertical-align: center; font-weight: 400; font-size: 13px" >
+                  {% for link in contact.contactLinks %}
+                    <a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none" href="{{ link.link }}">{{link.title}}</a>
+                  {% endfor %}
+                </p>
+              {% endif %}
               <p>
                 <span style="font-size: 14px; font-weight: 400">Société </span><br/><br/>
                 <a class="result-title" href="/company_details/{{company.companyId}}">{{company.companyLegalName }}</a><br/><br/>
@@ -54,8 +61,8 @@
                       <a href="/contact_details/{{con.contactId}}"  style="font-size: 13px; color: #176B87" class="result-title" >{{con.contactFullName | capitalize}}</a><br/>
                       <span style="font-size: 10px;" >{{ con.contactRole }} <span>
                       {% if con.contactLinkedinUrl %}
-                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ con.contactLinkedinUrl }}" target="_blank" rel="noopener noreferrer">Lien de contact</a>
-                    {% endif %}
+                        <br/><br/><a style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px;text-decoration: none; color:#555" href="{{ con.contactLinkedinUrl }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                      {% endif %}
                       </div>
                 {% endfor %}
                 </div>
