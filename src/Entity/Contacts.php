@@ -85,6 +85,14 @@ class Contacts
      */
     private $contactFacebookUrl;
 
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="contact_other_link", type="string", length=255, nullable=true)
+     */
+    private $contactOtherLink;
+
     /**
      * @var \Companies
      *
@@ -200,5 +208,15 @@ class Contacts
     public function getContactFacebookUrl()
     {
         return $this->contactFacebookUrl;
+    }
+
+    /**
+     * Get the value of contactOtherLink
+     *
+     * @return  string|null
+     */ 
+    public function getContactOtherLink()
+    {
+        return $this->contactOtherLink;
     }
 }
