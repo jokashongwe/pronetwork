@@ -56,7 +56,7 @@ class ContactsRepository extends ServiceEntityRepository
         $result = $is_count ? 'count(c.contact_full_name)' : '*';
         $last_part = $is_count ? '' : "ORDER BY c.contact_full_name LIMIT 50 OFFSET $offset";
         $sql = "
-            SELECT $result FROM contacts c WHERE c.contact_full_name ilike '$value' $last_part 
+            SELECT $result FROM contacts c WHERE c.contact_full_name ilike '$value' or c.contact_role ilike '$value'  $last_part 
         ";
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();

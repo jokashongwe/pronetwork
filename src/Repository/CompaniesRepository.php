@@ -85,8 +85,9 @@ class CompaniesRepository extends ServiceEntityRepository
                 SELECT $result 
                 FROM companies c
                 WHERE 
-                    lower(c.company_legal_name) ilike '$value' OR 
-                    lower(company_sectors::text) ilike '$value'
+                    c.company_legal_name ilike '$value' OR
+                    c.company_alternative_name ilike '$value' OR 
+                    company_sectors::text ilike '$value'
                 $last_part
             ";
         }else {
@@ -94,8 +95,7 @@ class CompaniesRepository extends ServiceEntityRepository
                 SELECT $result 
                 FROM companies c
                 WHERE 
-                    (lower(c.company_legal_name) ilike '$value' OR 
-                    lower(company_sectors::text) ilike '$value') AND
+                    (c.company_legal_name ilike '$value' OR c.company_alternative_name ilike '$value' OR company_sectors::text ilike '$value') AND
                     lower(company_state) = lower('$province') 
                 $last_part
             ";
