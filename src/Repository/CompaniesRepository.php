@@ -76,7 +76,7 @@ class CompaniesRepository extends ServiceEntityRepository
     public function recherche($value, $province=null, $offset=0, $is_count=false)
     {
         $conn = $this->getEntityManager()->getConnection();
-        $value = strtolower($value);
+        $value = trim(strtolower($value));
         $result = $is_count ? 'count(c.company_legal_name)' : '*';
         $last_part = $is_count ? '' : "ORDER BY c.company_legal_name LIMIT 50 OFFSET $offset";
         $province = strtolower($province) == "all" ? null : strtolower($province);
@@ -85,7 +85,7 @@ class CompaniesRepository extends ServiceEntityRepository
                 SELECT $result 
                 FROM companies c
                 WHERE 
-                    c.company_legal_name ilike '$value' OR 
+                    lower(c.company_legal_name) ilike '$value' OR 
                     lower(company_sectors::text) ilike '$value'
                 $last_part
             ";
@@ -94,7 +94,7 @@ class CompaniesRepository extends ServiceEntityRepository
                 SELECT $result 
                 FROM companies c
                 WHERE 
-                    (c.company_legal_name ilike '$value' OR 
+                    (lower(c.company_legal_name) ilike '$value' OR 
                     lower(company_sectors::text) ilike '$value') AND
                     lower(company_state) = lower('$province') 
                 $last_part

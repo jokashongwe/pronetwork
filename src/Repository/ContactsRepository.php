@@ -52,12 +52,13 @@ class ContactsRepository extends ServiceEntityRepository
     public function recherche($value, $offset=0, $is_count)
     {
         $conn = $this->getEntityManager()->getConnection();
+        $value = trim(strtolower($value));
         $result = $is_count ? 'count(c.contact_full_name)' : '*';
         $last_part = $is_count ? '' : "ORDER BY c.contact_full_name LIMIT 50 OFFSET $offset";
         $sql = "
             SELECT $result
             FROM contacts c
-            WHERE c.contact_full_name ilike '$value'
+            WHERE lower(c.contact_full_name) ilike '$value'
             $last_part 
         ";
         $stmt = $conn->prepare($sql);
