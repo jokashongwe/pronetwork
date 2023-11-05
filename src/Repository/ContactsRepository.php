@@ -49,7 +49,7 @@ class ContactsRepository extends ServiceEntityRepository
         
     }
 
-    public function recherche($value, $offset=0, $is_count)
+    public function recherche($value, $is_count=false, $offset=0)
     {
         $conn = $this->getEntityManager()->getConnection();
         $value = trim(strtolower($value));
