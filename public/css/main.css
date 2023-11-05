@@ -847,6 +847,19 @@ legend {
   font-size: 13px;
 }
 
+.contact-links{
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  -ms-flex-pack: justify;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap
+}
+
 .company-contact-item{
   display: -ms-flexbox;
   display: flex;
