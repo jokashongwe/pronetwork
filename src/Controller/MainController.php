@@ -106,10 +106,10 @@ class MainController extends AbstractController
     }
 
 
-    #[Route('/about', name: 'app_about')]
+    #[Route('/cgu', name: 'app_cgu')]
     public function about(): Response
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/cgu.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }

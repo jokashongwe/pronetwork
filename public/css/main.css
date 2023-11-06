@@ -765,6 +765,16 @@ legend {
   opacity: 0.5;
 }
 
+
+.cgu-text{
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  text-align: justify;
+  font-weight: 300;
+  font-size: 13px;
+}
+
 .choices__heading {
   font-weight: 600;
   font-size: 12px;
@@ -773,8 +783,16 @@ legend {
   color: gray;
 }
 
+.blog-content{
+  width: 50%; 
+  margin:auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
 .blog-img{
-  height: 18rem;
+  height: 10vh;
 }
 
 .choices__button {
