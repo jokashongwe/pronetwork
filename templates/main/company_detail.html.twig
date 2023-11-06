@@ -45,7 +45,7 @@
                 </a>
                 {% endif %}
             </p>
-              
+            
             <p>
                   <a  href="/search?filter=companies&category={{company.companyCategory}}"  class="result-category" style="padding:5px; background-color: #DAFFFB; font-size: 12px; border-radius: 5px"><i style="color:#999" class="fa-solid fa-building"></i> catégorie: {{company.companyCategory }}</a>
             </p>
@@ -60,8 +60,12 @@
                 </p>
               {% endif %}
               <hr/>
+              {% if company.companyDesc %}
               <p style="margin-right: 15px; text-align: justify;"><span style="font-size: 13px; font-weight: bold" > Description </span><br/><br/><span style="font-size: 13px;" >{{company.companyDesc }}</span></p>
+              {% endif %}
+              {% if company.companyLegalForm %}
               <p><span style="font-size: 13px; font-weight: bold" >Forme légale </span>  <br/><br/> {{company.companyLegalForm }}</p>
+              {% endif %}
               <p>Professionnels liés à l'entreprise</p>
               <hr>
               
