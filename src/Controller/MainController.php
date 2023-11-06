@@ -117,8 +117,6 @@ class MainController extends AbstractController
     #[Route('/removal', name: 'app_removal')]
     public function removal(): Response
     {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        return $this->redirectToRoute('app_main');
     }
 }
