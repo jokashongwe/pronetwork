@@ -3,7 +3,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Annuaire des entreprises et professionels de la RDC" />
+    <meta name="description" content="Annuaire des entreprises et professionels en Afrique" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
@@ -27,7 +27,7 @@
     <div class="s003" style="min-height: 20vh;" >
       <h1 style="text-align: left; width: 47%; color: #64CCC5" >
         <a style="color: #64CCC5; text-decoration: none" href="{{ path('app_main') }}" >ProNetwork</a>
-        <span style="font-weight: normal; font-size: 10px; color: #000" >RDC</span>
+        <span style="font-weight: normal; font-size: 10px; color: #000" >AFRICA</span>
       </h1>
       
       <form method="GET" action="{{ path('app_search') }}" >
@@ -40,34 +40,7 @@
               </select>
             </div>
           </div>
-          <div class="input-field first-wrap">
-            <div class="input-select">
-              <select data-trigger="" name="provinces">
-                <option value="all" >Provinces</option>
-                <option value="Kinshasa" >Kinshasa</option>
-                <option value="Haut-Katanga" >Haut-Katanga</option>
-                <option value="Nord-Kivu" >Nord-Kivu</option>
-                <option value="Sud-Kivu" >Sud-Kivu</option>
-                <option value="Maniema" >Maniema</option>
-                <option value="Haut-Uele" >Haut-Uele</option>
-                <option value="Bas-Uele" >Bas-Uele</option>
-                <option value="Kongo-Central" >Kongo-Central</option>
-                <option value="Kasai-Central" >Kasai-Central</option>
-                <option value="Kasai-Oriental" >Kasai-Oriental</option>
-                <option value="Kasai" >Kasai</option>
-                <option value="Lualaba" >Lualaba</option>
-                <option value="Lomami" >Lomami</option>
-                <option value="Tanganyika" >Tanganyika</option>
-                <option value="Nord-Ubangi" >Nord-Ubangi</option>
-                <option value="Sud-Ubangi" >Sud-Ubangi</option>
-                <option value="Tshopo" >Tshopo</option>
-                <option value="Tshuapa" >Tshuapa</option>
-                <option value="Maindombe" >Maindombe</option>
-                <option value="Kwilu" >Kwilu</option>
-                <option value="Kwanngo" >Kwanngo</option>
-              </select>
-            </div>
-          </div>
+          
           <div class="input-field second-wrap">
             <input id="search" value="{{query | replace({'%':''})}}" name="search" type="text" placeholder="Recherche..." />
           </div>
