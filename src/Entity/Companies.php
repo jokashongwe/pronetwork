@@ -122,6 +122,14 @@ class Companies
      */
     private $companyCapital;
 
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="company_country", type="string", length=255, nullable=true)
+     */
+    private $companyCountry;
+
     /**
      * @var string|null
      *
@@ -340,5 +348,15 @@ class Companies
     public function getCompanyLegalForm()
     {
         return $this->companyLegalForm;
+    }
+
+    /**
+     * Get the value of companyCountry
+     *
+     * @return  string|null
+     */ 
+    public function getCompanyCountry()
+    {
+        return $this->companyCountry;
     }
 }

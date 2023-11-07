@@ -85,7 +85,7 @@
         {% for result in results %}
           {% if type == 'contacts' %}
             <div class="results-item" style="padding-right: 15px">
-              <a href="/contact_details/{{result.contact_id}}" class="result-title" >{{ loop.index  }}.{{result.contact_full_name | upper}}</a>
+              <a href="/contact_details/{{result.contact_id}}" class="result-title" >{{ loop.index + ((page - 1) * 50)  }}.{{result.contact_full_name | upper}}</a>
               <p style="color: #949494" >
                 <i  style="color: #949494; margin-right: 5px; font-size: 13px" class="fa-solid fa-user-tag"></i>{{ result.contact_role }}
               </p>
@@ -99,7 +99,7 @@
           <div class="results-item">
             <a href="/company_details/{{result.company_id}}" class="result-title">{{ loop.index }}. {{result.company_legal_name}}</a>
               <p style="color: #949494" >
-                <i  style="color: #949494; margin-right: 10px" class="fa-solid fa-map-location-dot"></i>{{result.company_state ? result.company_state : 'Kinshasa' }}
+                <i  style="color: #949494; margin-right: 10px" class="fa-solid fa-map-location-dot"></i>{{result.company_country ? result.company_country : '' }}
               <p/>
               {% if result.company_address %}
               <p>
